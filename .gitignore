@@ -1,0 +1,46 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+config/
+mvnw
+mvnw.cmd
+spengerclient/package-lock.json
+spengerclient/node_modules/
+spengerclient/dist/
+spengerclient/.env
+spengerclient/.env.local
+spengerclient/.env.development.local
+spengerclient/.env.test.local
+spengerclient/.env.production.local
+
+
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/

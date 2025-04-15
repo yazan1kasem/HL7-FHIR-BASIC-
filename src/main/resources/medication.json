@@ -1,0 +1,67 @@
+{
+    "resourceType": "Medication",
+    "id": "med0336",
+    "status": "active",
+    "form": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "385219001",
+                "display": "Injection Solution (qualifier value)"
+            }
+        ],
+        "text": "Injection Solution (qualifier value)"
+    },
+    "ingredient": [
+        {
+            "itemCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "1114879",
+                        "display": "Dopamine"
+                    }
+                ]
+            },
+            "strength": {
+                "numerator": {
+                    "value": 400,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "mg"
+                },
+                "denominator": {
+                    "value": 500,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "mL"
+                }
+            }
+        },
+        {
+            "itemCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/sid/ndc",
+                        "code": "0264751010",
+                        "display": "Dextrose 5% injection USP"
+                    }
+                ]
+            },
+            "strength": {
+                "numerator": {
+                    "value": 5,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "g"
+                },
+                "denominator": {
+                    "value": 100,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "mL"
+                }
+            }
+        }
+    ],
+    "batch": {
+        "lotNumber": "AT 9035 ZU69",
+        "expirationDate": "2030-11-30"
+    }
+}

@@ -1,0 +1,35 @@
+<ul class="list-group">
+    <li class="list-group-item">ID: {{ medication.id }}</li>
+    <li class="list-group-item">
+        <label> Status: 
+            <select [(ngModel)]="medication.status">
+                <option *ngFor="let status of medicationStatusCodes" [value]="status">
+                    {{ status }}
+                </option>
+            </select>
+        </label>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <h3>Batch</h3>
+            <div>
+                <label> Lot Number: <input [(ngModel)]="medication.batch.lotNumber" type="text" /></label>
+            </div>
+            <p></p>
+            <div>
+                <label> Expiration Date: <input [(ngModel)]="medication.batch.expirationDate" type="date" /></label>
+            </div>
+        </div>
+    </li>
+</ul>
+<p></p>
+<div>
+    <button (click)="updateMedication()" type="button" class="btn btn-warning">
+        Änderungen speichern
+    </button>
+    <p></p>
+    <button (click)="deleteMedication()" type="button" class="btn btn-danger">
+        Medikament löschen
+    </button>
+</div>

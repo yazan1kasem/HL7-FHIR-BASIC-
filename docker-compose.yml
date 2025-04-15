@@ -1,0 +1,20 @@
+services:
+  web:
+    environment:
+      name: value
+    build: .
+    ports:
+      - 8080:8080
+  db:
+    image: mysql
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: yazan
+        MYSQL_DATABASE: db_spengergasseonfhir
+  runner:
+    image: gitlab/gitlab-runner
+    stdin_open: true
+    tty: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config:/etc/gitlab-runner

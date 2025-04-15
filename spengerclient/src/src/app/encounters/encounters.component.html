@@ -1,0 +1,47 @@
+<table class="table">
+    <tr>
+        <th>EncounterId</th>
+        <th>Identifier</th>
+        <th>StatusHistory</th>
+        <th>Participant</th>
+        <th>Appointment</th>
+        <th>PartOf</th>
+        <th>Subject</th>
+        <th></th>
+    </tr>
+    <tr *ngFor='let encounter of encounterArr$' (click)="selectEncounter(encounter)">
+        <td>{{encounter.id}}</td>
+        <td>
+            <p *ngFor='let identifier of encounter?.identifier'>{{identifier?.value}}</p>
+        </td>
+        <td>
+            <p *ngFor='let statushistory of 
+        encounter.statusHistory'>{{statushistory?.period?.start}}</p>
+        <p *ngFor='let statushistory of 
+        encounter.statusHistory'>{{statushistory?.status}}</p>
+        </td>
+        <td>
+            <p *ngFor='let participant of 
+        encounter.participant'>{{participant?.individual?.reference}}</p>
+        </td>
+        <td>
+            <p *ngFor='let appointment of 
+        encounter.appointment'>{{appointment?.reference}}</p>
+        <p *ngFor='let appointment of 
+        encounter.appointment'>{{appointment?.display}}</p>
+        </td>
+        <td>
+            <p>{{encounter?.partOf?.reference}}</p>
+            <p>{{encounter?.partOf?.display}}</p>
+        </td>
+        <td>
+            <p>{{encounter?.subject?.reference}}</p>
+            <p>{{encounter?.subject?.display}}</p>
+        </td>
+    </tr>
+</table>
+<button (click)="createEncounter()" type="button" class="btn btn-success">Neuen Encounter anlegen</button>
+<div *ngIf="(selectedEncounter.id != '')">
+    {{selectedEncounter.id}}
+    <app-encounter [id]="selectedEncounter.id! " (encounterModified)="onEncounterModified($event)"></app-encounter>
+</div>

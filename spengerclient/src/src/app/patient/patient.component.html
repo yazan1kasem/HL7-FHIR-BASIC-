@@ -1,0 +1,52 @@
+<ul class="list-group">
+    <li class="list-group-item">ID: {{ patient.id }}</li>
+    <li class="list-group-item">
+        <label> Active: <input [(ngModel)]="patient.active" type="checkbox">
+        </label>
+    </li>
+    <li class="list-group-item">
+        <label> Gender: <select [(ngModel)]="patient.gender">
+                <option *ngFor="let gender of patientGender" value="{{gender}}">
+                    {{gender}}
+                </option>
+            </select> </label>
+    </li>
+    <li class="list-group-item">
+        <label> Birth date:<input [(ngModel)]="patient.birthDate" type="date">
+        </label>
+    </li>
+    <li class="list-group-item">
+        <label> Deceased <input [(ngModel)]="patient.deceasedBoolean" type="checkbox"> </label>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h3>Names</h3>
+            <button (click)="addName()" type="button" class="btn btn-success">
+                Namen hinzufügen
+            </button>
+            <div *ngFor="let name of patient?.name">
+                <div>
+                    <label> Use:
+                        <select [(ngModel)]="name.use">
+                            <option *ngFor="let useCode of humanNameUse" value="{{useCode}}">
+                                {{useCode}}
+                            </option>
+                        </select>
+                    </label>
+                    <label> Text: <input [(ngModel)]="name.text" type="text" /></label>
+                    <button (click)="deleteName(name)" type="button" class="btn btn-danger">
+                        Namen löschen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+<div>
+    <button (click)="deletePatient()" type="button" class="btn btn-danger">
+        Patienten löschen
+    </button>
+    <button (click)="updatePatient()" type="button" class="btn btn-warning">
+        Änderungen speichern
+    </button>
+</div>

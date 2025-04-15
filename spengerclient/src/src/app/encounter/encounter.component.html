@@ -1,0 +1,147 @@
+<div class="container mt-4">
+  <h2>Encounter Details</h2>
+  <ul class="list-group">
+
+    <!-- ID -->
+    <li class="list-group-item">
+      <strong>ID:</strong>
+      <input type="text" class="form-control" [(ngModel)]="encounter.id" readonly>
+    </li>
+
+    <!-- Status -->
+    <li class="list-group-item">
+      <strong>Status:</strong>
+      <select class="form-control" [(ngModel)]="encounter.status" required>
+        <option *ngFor="let status of Encounter.statusCode" [ngValue]="status">{{ status }}</option>
+      </select>
+    </li>
+
+
+    <!-- Subject -->
+    <li class="list-group-item" *ngIf="encounter.subject">
+      <strong>Subject:</strong>
+      <input type="text" class="form-control" [(ngModel)]="encounter.subject.reference" placeholder="Reference" />
+    </li>
+
+
+    <!-- Period Start -->
+    <li *ngIf="encounter.period" class="list-group-item">
+      <strong>Period Start:</strong>
+      <input type="datetime-local" [(ngModel)]="encounter.period!.start" class="form-control">
+    </li>
+
+    <!-- Period End -->
+    <li *ngIf="encounter.period" class="list-group-item">
+      <strong>Period End:</strong>
+      <input type="datetime-local" [(ngModel)]="encounter.period!.end" class="form-control">
+    </li>
+
+    <!-- Identifier -->
+    <li class="list-group-item">
+      <strong>Identifier:</strong>
+      <div *ngFor="let id of encounter.identifier" class="mb-2">
+        <input type="text" [(ngModel)]="id.value" class="form-control" placeholder="Identifier Value">
+        <input type="text" [(ngModel)]="id.use" class="form-control mt-1" placeholder="Identifier System">
+      </div>
+    </li>
+
+    <!-- Status History -->
+    <li class="list-group-item">
+      <strong>Status History:</strong>
+      <div *ngFor="let history of encounter.statusHistory" class="mb-2">
+        <select class="form-control" [(ngModel)]="history.status" required>
+          <option *ngFor="let status of Encounter.statusCode" [ngValue]="status">{{ status }}</option>
+        </select>
+        <input type="datetime-local" [(ngModel)]="history.period!.start" class="form-control mt-1" placeholder="Start Date">
+        <input type="datetime-local" [(ngModel)]="history.period!.end" class="form-control mt-1" placeholder="End Date">
+      </div>
+    </li>
+
+
+
+    <!-- Type -->
+    <li class="list-group-item">
+      <strong>Type:</strong>
+      <div *ngFor="let type of encounter.type; let i = index" class="mb-2">
+        <div *ngFor="let coding of type.coding" class="mt-1">
+          <input type="text" [(ngModel)]="coding.system" class="form-control" placeholder="Coding System">
+          <input type="text" [(ngModel)]="coding.code" class="form-control mt-1" placeholder="Coding Code">
+          <input type="text" [(ngModel)]="coding.display" class="form-control mt-1" placeholder="Coding Display">
+        </div>
+      </div>
+    </li>
+
+    <!-- Episode of Care -->
+    <li class="list-group-item">
+      <strong>Episode of Care:</strong>
+      <div *ngFor="let episode of encounter.episodeOfCare; let i = index" class="mb-2">
+        <input type="text" [(ngModel)]="episode.reference" class="form-control" placeholder="Episode Reference">
+        <input type="text" [(ngModel)]="episode.display" class="form-control mt-1" placeholder="Episode Display">
+      </div>
+    </li>
+
+    <!-- Participant -->
+    <li class="list-group-item">
+      <strong>Participant:</strong>
+      <div *ngFor="let participant of encounter.participant" class="mb-2">
+        <label>{{participant.id}}</label>
+        <input type="text" *ngIf="participant.individual!.reference" [(ngModel)]="participant.individual!.reference" class="form-control" placeholder="Participant Reference">
+        <input type="text" [(ngModel)]="participant.individual!.display" class="form-control mt-1" placeholder="Participant Display">
+      </div>
+    </li>
+
+    <!-- Appointment -->
+    <li class="list-group-item">
+      <strong>Appointment:</strong>
+      <div *ngFor="let appointment of encounter.appointment; let i = index" class="mb-2">
+        <input type="text" [(ngModel)]="appointment.reference" class="form-control" placeholder="Appointment Reference">
+        <input type="text" [(ngModel)]="appointment.display" class="form-control mt-1" placeholder="Appointment Display">
+      </div>
+    </li>
+
+    <!-- Reason Reference -->
+    <li class="list-group-item">
+      <strong>Reason Reference:</strong>
+      <div *ngFor="let reason of encounter.reasonReference; let i = index" class="mb-2">
+        <input type="text" [(ngModel)]="reason.reference" class="form-control" placeholder="Reason Reference">
+        <input type="text" [(ngModel)]="reason.display" class="form-control mt-1" placeholder="Reason Display">
+      </div>
+    </li>
+
+    <!-- Diagnosis -->
+    <li class="list-group-item">
+      <h3>Diagnoses</h3>
+      <button (click)="addDiagnosis()" type="button" class="btn btn-success mb-3">Add Diagnosis</button>
+      <div *ngFor="let diagnosis of encounter.diagnosis; let i = index" class="mb-3">
+        <div class="card p-3">
+          <div class="d-flex align-items-center">
+            <div class="me-3 flex-grow-1">
+              <label for="diagnosisCondition{{i}}" class="form-label">Condition:</label>
+              <input type="text" class="form-control" [(ngModel)]="diagnosis.condition!.reference" id="diagnosisCondition{{i}}" placeholder="Condition Reference">
+            </div>
+            <div class="me-3 flex-grow-1">
+              <label for="diagnosisUse{{i}}" class="form-label">Use:</label>
+              <input type="text" class="form-control" [(ngModel)]="diagnosis.use!.coding" id="diagnosisUse{{i}}" placeholder="Use">
+            </div>
+            <!-- Hier übergeben wir das 'diagnosis' Objekt statt 'i' -->
+            <button (click)="deleteDiagnosis(diagnosis)" type="button" class="btn btn-danger">Delete Diagnosis</button>
+          </div>
+        </div>
+      </div>
+    </li>
+
+
+    <!-- Part Of -->
+    <li *ngIf="encounter.partOf" class="list-group-item">
+      <strong>Part Of:</strong>
+      <input type="text" class="form-control" [(ngModel)]="encounter.partOf!.reference" placeholder="Part Of Reference">
+      <input type="text" class="form-control mt-1" [(ngModel)]="encounter.partOf!.display" placeholder="Part Of Display">
+    </li>
+
+  </ul>
+
+  <div class="mt-3">
+    <button (click)="deleteEncounter()" type="button" class="btn btn-danger me-2">Delete Encounter</button>
+    <button (click)="updateEncounter()" type="button" class="btn btn-warning">Save Changes</button>
+  </div>
+</div>

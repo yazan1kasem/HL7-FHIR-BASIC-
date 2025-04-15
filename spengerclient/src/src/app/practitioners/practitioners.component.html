@@ -1,0 +1,23 @@
+<table class="table">
+    <tr>
+        <th>PractitionerId</th>
+        <th>Name</th>
+        <th>Birthdate</th>
+        <th></th>
+    </tr>
+    <tr *ngFor='let practitioner of practitionerArr$' (click)="selectPractitioner(practitioner)">
+        <td>{{practitioner.id}}</td>
+        <td>
+            <p *ngFor='let name$ of practitioner?.name'>{{name$?.text}}</p>
+        </td>
+        <td>
+            <p>{{ practitioner.birthDate | date }}</p>
+        </td>
+    </tr>
+</table>
+<button (click)="createPractitioner()" type="button" class="btn btn-success">Neuen Practitioner anlegen</button>
+
+<div *ngIf="(selectedPractitioner?.id != '')">
+    {{selectedPractitioner.id}}
+    <app-practitioner [id]="selectedPractitioner.id! " (practitionerModified)="onPractitionerModified($event)"></app-practitioner>
+</div>

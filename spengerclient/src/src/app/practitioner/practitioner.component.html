@@ -1,0 +1,77 @@
+<ul class="list-group">
+    <li class="list-group-item">ID: {{ practitioner.id }}</li>
+    <li class="list-group-item">
+        <label> Active: <input [(ngModel)]="practitioner.active" type="checkbox">
+        </label>
+    </li>
+    <li class="list-group-item">
+        <label> Gender:
+            <select [(ngModel)]="practitioner.gender">
+                <option *ngFor="let gender of practitionerGender" [value]="gender">
+                    {{ gender }}
+                </option>
+            </select>
+        </label>
+    </li>
+    <li class="list-group-item">
+        <label> Birth date: <input [(ngModel)]="practitioner.birthDate" type="date">
+        </label>
+    </li>
+    <li class="list-group-item">
+        <label> Telecom: <input [(ngModel)]="practitioner.telecom" type="text">
+        </label>
+    </li>
+    <li class="list-group-item">
+        <label> Address: <input [(ngModel)]="practitioner.address" type="text">
+        </label>
+    </li>
+  <li class="list-group-item">
+    <label>Foto:</label>
+
+    <!-- If no photo -->
+    <div *ngIf="!practitioner.photo || practitioner.photo.length === 0">
+      <input type="file" accept="image/png" (change)="onPhotoChange($event)" class="form-control" />
+    </div>
+
+    <!-- If photo is available -->
+    <div *ngIf="practitioner.photo && practitioner.photo.length > 0" class="photo-wrapper">
+      <div class="photo-container">
+        <img [src]="'data:image/png;base64,' + practitioner.photo[0].data" class="preview-img" />
+        <button (click)="deletePhoto()" type="button" class="delete-btn" aria-label="Remove photo">&times;</button>
+      </div>
+
+    </div>
+  </li>
+
+
+
+    <li class="list-group-item">
+        <label> Qualification: {{ practitioner.qualification }}</label>
+    </li>
+    <li class="list-group-item">
+        <label> Communication: {{ practitioner.communication }}</label>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h3>Names</h3>
+            <button (click)="addName()" type="button" class="btn btn-success">Namen hinzufügen</button>
+            <div *ngFor="let name of practitioner?.name">
+                <div>
+                    <label> Use:
+                        <select [(ngModel)]="name.use">
+                            <option *ngFor="let useCode of humanNameUse" [value]="useCode">
+                                {{ useCode }}
+                            </option>
+                        </select>
+                    </label>
+                    <label> Text: <input [(ngModel)]="name.text" type="text" /></label>
+                    <button (click)="deleteName(name)" type="button" class="btn btn-danger">Namen löschen</button>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+<div>
+    <button (click)="deletePractitioner()" type="button" class="btn btn-danger">Practitioner löschen</button>
+    <button (click)="updatePractitioner()" type="button" class="btn btn-warning">Änderungen speichern</button>
+</div>

@@ -1,0 +1,39 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Medication ID</th>
+      <th>Text</th>
+      <th>Ingredients (Display)</th>
+      <th>Status:</th>
+      <th>Batch Lot Number</th>
+      <th>Batch Expiration Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let medication of medicationArr$" (click)="selectMedication(medication)">
+      <td>{{ medication.id }}</td>
+      <td>{{ medication.form?.text}}</td>
+      <td>
+        <p *ngFor="let ingredient of medication.ingredient">
+          <span *ngFor="let coding of ingredient.itemCodeableConcept.coding">
+            {{ coding.display }}
+          </span>
+        </p>
+      </td>
+      <td>{{ medication.status }}</td>
+      <td>{{ medication.batch.lotNumber }}</td>
+      <td>{{ medication.batch.expirationDate }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button (click)="createMedication()" type="button" class="btn btn-success">Neue Medication anlegen</button>
+
+<p></p>
+
+<div *ngIf="selectedMedication && selectedMedication.id">
+  <app-medication
+    [id]="selectedMedication.id"
+    (medicationModified)="onMedicationModified($event)">
+  </app-medication>
+</div>
