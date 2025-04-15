@@ -36,9 +36,11 @@ Das Projekt wurde mit Fokus auf Modularität, Wartbarkeit und realweltnahe Umset
 
 
 
+
 ## Projektstruktur (Auszug)
 
 
+```
 HL7-FHIR-BASIC-/
 │
 ├── spengerclient/                  → Angular-Frontend
@@ -50,6 +52,7 @@ HL7-FHIR-BASIC-/
 ├── docker-compose.yml             → Container-Orchestrierung (App + DB)
 ├── Dockerfile                     → Backend-Containerdefinition
 ├── pom.xml                        → Maven-Konfiguration
+```
 
 
 ## Initialisierung & Start
