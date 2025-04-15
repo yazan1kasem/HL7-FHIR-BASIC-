@@ -2,7 +2,7 @@
 
 ![image](https://github.com/user-attachments/assets/da03654c-0357-4a6c-ba9f-f38d8f576e9b)
 
-*Abbildung: Beispielhafte Ansicht des Angular-Frontends (Screenshot hier einfügen)*
+*Abbildung: Beispielhafte Ansicht des Angular-Frontends*
 
 ## Projektbeschreibung
 
