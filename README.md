@@ -1,4 +1,3 @@
-```markdown
 # HL7-FHIR-BASIC – Fullstack Healthcare Data Management System
 
 ![image](https://github.com/user-attachments/assets/da03654c-0357-4a6c-ba9f-f38d8f576e9b)
@@ -13,7 +12,6 @@ Die Anwendung bildet zentrale FHIR-Ressourcen wie `Patient`, `Practitioner`, `Me
 
 Das Projekt wurde mit Fokus auf Modularität, Wartbarkeit und realweltnahe Umsetzbarkeit konzipiert und eignet sich sowohl für den produktiven Einsatz als auch als Referenzlösung für Ausbildung und Lehre im Gesundheits-IT-Umfeld.
 
----
 
 ## Technologien
 
@@ -36,11 +34,11 @@ Das Projekt wurde mit Fokus auf Modularität, Wartbarkeit und realweltnahe Umset
 - Docker Compose zur Orchestrierung aller Dienste
 - `render.yaml` zur automatisierten Bereitstellung auf Render.com (CI/CD-fähig)
 
----
+
 
 ## Projektstruktur (Auszug)
 
-```
+
 HL7-FHIR-BASIC-/
 │
 ├── spengerclient/                  → Angular-Frontend
@@ -52,9 +50,7 @@ HL7-FHIR-BASIC-/
 ├── docker-compose.yml             → Container-Orchestrierung (App + DB)
 ├── Dockerfile                     → Backend-Containerdefinition
 ├── pom.xml                        → Maven-Konfiguration
-```
 
----
 
 ## Initialisierung & Start
 
