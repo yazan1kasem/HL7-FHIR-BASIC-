@@ -106,5 +106,3 @@ Die Anwendung kann so direkt über Render.com oder vergleichbare Plattformen in 
 ## Fazit
 
 Diese Anwendung stellt ein voll funktionsfähiges System zur Verwaltung medizinischer Daten nach dem HL7-FHIR-Standard dar. Sie zeigt praxisnah die Kombination moderner Fullstack-Technologien mit medizinischer Datenmodellierung und produktionsreifer Infrastruktur. Sie eignet sich gleichermaßen als Lehrprojekt, Demonstrator oder Grundlage für produktive eHealth-Systeme.
-```
-
